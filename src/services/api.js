@@ -1,0 +1,86 @@
+const BASE = 'http://localhost:3000/api'
+
+export async function register(name, username, password) {
+    const res = await fetch(`${BASE}/register`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, username, password})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function login(username, password) {
+    const res = await fetch(`${BASE}/login`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
+        body: JSON.stringify({username, password})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function logout() {
+    const res = await fetch(`${BASE}/logout`, {
+        method: 'POST',
+        credentials: 'include'
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function adataim() {
+    const res = await fetch(`${BASE}/me`, {
+        credentials: 'include'
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false}
+    else return {result: true, user: data}
+}
+
+export async function getNotes() {
+    const res = await fetch(`${BASE}/notes`, {
+        credentials: 'include'
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, notes: data}
+}
+
+export async function createNote(title, content) {
+    const res = await fetch(`${BASE}/notes`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
+        body: JSON.stringify({title, content})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function updateNote(id, title, content) {
+    const res = await fetch(`${BASE}/notes/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
+        body: JSON.stringify({title, content})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function deleteNote(id) {
+    const res = await fetch(`${BASE}/notes/${id}`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
