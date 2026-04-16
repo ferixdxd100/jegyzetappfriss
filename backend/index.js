@@ -181,6 +181,55 @@ app.delete('/api/notes/:id', auth, async (req, res) => {
     }
 })
 
+app.put('/api/username', auth, async (req, res) => {
+    const { ujUsername } = req.body
+    if (!ujUsername) {
+        return res.status(400).json({ message: "Az új felhasználónév megadása kötelező" })
+    }
+    try {
+        const [exists] = await db.query('SELECT id FROM users WHERE username = ?', [ujUsername])
+        if (exists.length) {
+            return res.status(402).json({ message: "Ez a felhasználónév már foglalt!" })
+        }
+        await db.query('UPDATE users SET username = ? WHERE id = ?', [ujUsername, req.user.id])
+        return res.status(200).json({ message: "Sikeresen módosult a felhasználónév" })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: "Szerverhiba" })
+    }
+})
+
+app.put('/api/jelszo', auth, async (req, res) => {
+    const { jelenlegiJelszo, ujJelszo } = req.body
+    if (!jelenlegiJelszo || !ujJelszo) {
+        return res.status(400).json({ message: "Hiányzó bemeneti adatok" })
+    }
+    try {
+        const [rows] = await db.query('SELECT * FROM users WHERE id = ?', [req.user.id])
+        const ok = await bcrypt.compare(jelenlegiJelszo, rows[0].password)
+        if (!ok) {
+            return res.status(401).json({ message: "A régi jelszó nem helyes" })
+        }
+        const hash = await bcrypt.hash(ujJelszo, 10)
+        await db.query('UPDATE users SET password = ? WHERE id = ?', [hash, req.user.id])
+        return res.status(200).json({ message: "Sikeresen módosult a jelszavad" })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: "Szerverhiba" })
+    }
+})
+
+app.delete('/api/fiokom', auth, async (req, res) => {
+    try {
+        await db.query('DELETE FROM users WHERE id = ?', [req.user.id])
+        res.clearCookie(COOKIE_NAME, { path: '/' })
+        return res.status(200).json({ message: "Sikeres fióktörlés" })
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ message: "Szerverhiba" })
+    }
+})
+
 // --- szerver elindítása ---
 app.listen(PORT, () => {
     console.log(`API fut: http://localhost:${PORT}/`)

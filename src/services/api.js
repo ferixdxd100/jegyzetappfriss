@@ -84,3 +84,37 @@ export async function deleteNote(id) {
     if (!res.ok) return {result: false, message: data.message}
     else return {result: true, message: data.message}
 }
+
+export async function usernameModositas(ujUsername) {
+    const res = await fetch(`${BASE}/username`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ujUsername})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function jelszoModositas(jelenlegiJelszo, ujJelszo) {
+    const res = await fetch(`${BASE}/jelszo`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({jelenlegiJelszo, ujJelszo})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
+
+export async function fiokTorlese() {
+    const res = await fetch(`${BASE}/fiokom`, {
+        method: 'DELETE',
+        credentials: 'include'
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}

@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import About from './pages/About'
 import Notes from './pages/Notes'
+import Profile from './pages/Profile'
 import { adataim } from './services/api'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/register" element={user ? <Navigate to="/notes" /> : <Register />} />
             <Route path="/about" element={<About />} />
             <Route path="/notes" element={user ? <Notes user={user} onLogout={() => setUser(null)} /> : <Navigate to="/login" />} />
+            <Route path="/profile" element={user ? <Profile /> : <Navigate to="/login" />} />
         </Routes>
     )
 }

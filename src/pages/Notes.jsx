@@ -45,11 +45,14 @@ export default function Notes({user, onLogout}) {
             <div className="container py-4">
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h1 style={{fontFamily: 'cursive'}}>Notesed</h1>
-                    <Button content={"Kijelentkezés"} color={"danger"} onClick={async () => {
-                        await logout()
-                        onLogout()
-                        navigation('/')
-                    }} />
+                    <div className="d-flex gap-2">
+                        <Button content={"Fiókom"} color={"dark"} onClick={() => navigation('/profile')} />
+                        <Button content={"Kijelentkezés"} color={"danger"} onClick={async () => {
+                            await logout()
+                            onLogout()
+                            navigation('/')
+                        }} />
+                    </div>
                 </div>
 
                 <div className="mb-4">
