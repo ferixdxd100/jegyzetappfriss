@@ -98,6 +98,7 @@ export default function Notes({user, onLogout}) {
                                     <div className="d-flex gap-2">
                                         <Button content={"Szerkesztés"} color={"light"} onClick={() => openForm(note)} />
                                         <Button content={"Törlés"} color={"danger"} onClick={async () => {
+                                            if (!confirm('Biztosan törölni szeretnéd ezt a jegyzetet?')) return
                                             const res = await deleteNote(note.id)
                                             if (!res.result) {
                                                 alert(res.message)
