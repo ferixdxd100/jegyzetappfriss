@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3000/api'
+const BASE = 'https://nodejs215.dszcbaross.edu.hu/api'
 
 export async function register(name, username, password) {
     const res = await fetch(`${BASE}/register`, {
