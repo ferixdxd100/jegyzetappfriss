@@ -6,10 +6,10 @@ export default function Home({user}) {
 
     return (
         <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
-             style={{backgroundColor: '#f5f5dc'}}>
+             style={{backgroundColor: '#F7F4EE'}}>
             <div className="row w-100">
                 <div className="col-12 col-md-8 col-lg-6 mx-auto">
-                    <h1 className="text-center mb-5" style={{fontFamily: 'cursive', fontSize: '3rem'}}>
+                    <h1 className="text-center mb-5" style={{fontFamily: 'cursive', fontSize: '3rem', color: '#3D3730'}}>
                         Notesed
                     </h1>
                     <div className="d-flex flex-column flex-md-row justify-content-center gap-3">

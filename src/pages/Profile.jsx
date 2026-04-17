@@ -21,40 +21,48 @@ export default function Profile() {
         })()
     }, [])
 
-    // felhasználónév modal
     const [usernameOpen, setUsernameOpen] = useState(false)
     const [ujUsername, setUjUsername] = useState('')
     const [usernameHiba, setUsernameHiba] = useState('')
 
-    // jelszó modal
     const [jelszoOpen, setJelszoOpen] = useState(false)
     const [aktJelszo, setAktJelszo] = useState('')
     const [ujJelszo1, setUjJelszo1] = useState('')
     const [ujJelszo2, setUjJelszo2] = useState('')
     const [jelszoHiba, setJelszoHiba] = useState('')
 
-    // fiók törlés modal
     const [torlesOpen, setTorlesOpen] = useState(false)
     const [torlesHiba, setTorlesHiba] = useState('')
 
     return (
-        <div>
-            <Navbar user={user} />
-            <div className="d-flex justify-content-center mt-5">
-                <div>
-                    <div className="my-2">
+        <div className="container-fluid min-vh-100" style={{backgroundColor: '#F7F4EE'}}>
+            <div className="container py-4">
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h1 style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
+                    <Navbar user={user} />
+                </div>
+
+                <div className="row justify-content-center mb-4">
+                    <div className="col-12 col-md-6 col-lg-4">
+                        <div className="card shadow" style={{backgroundColor: '#E8C84A', border: 'none'}}>
+                            <div className="card-body">
+                                <h4 style={{fontFamily: 'cursive', color: '#3D3730'}} className="mb-3">Profilom</h4>
+                                <p className="mb-1" style={{color: '#3D3730'}}><strong>Név:</strong> {user?.name}</p>
+                                <p className="mb-0" style={{color: '#3D3730'}}><strong>Felhasználónév:</strong> {user?.username}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row justify-content-center">
+                    <div className="col-12 col-md-6 col-lg-4 d-flex flex-column gap-2">
                         <Button color={'dark'} content={'Felhasználónév módosítása'} onClick={() => setUsernameOpen(true)} />
-                    </div>
-                    <div className="my-2">
                         <Button color={'dark'} content={'Jelszó módosítása'} onClick={() => setJelszoOpen(true)} />
-                    </div>
-                    <div className="my-2">
                         <Button color={'danger'} content={'Fiók törlése'} onClick={() => setTorlesOpen(true)} />
                     </div>
                 </div>
             </div>
 
-            {/* Felhasználónév módosítás */}
             <Modal open={usernameOpen} title={"Felhasználónév módosítása"} submitText={"Módosítás"}
                 onClose={() => setUsernameOpen(false)}
                 onSubmit={async () => {
@@ -65,13 +73,14 @@ export default function Profile() {
                         setUsernameHiba('')
                         setUjUsername('')
                         setUsernameOpen(false)
+                        const updated = await adataim()
+                        if (updated.result) setUser(updated.user)
                     }
                 }}>
                 {usernameHiba && <div className="alert alert-danger">{usernameHiba}</div>}
                 <TextBox title={"Felhasználónév"} type={"text"} placeholder={"John Doe"} value={ujUsername} setValue={setUjUsername} />
             </Modal>
 
-            {/* Jelszó módosítás */}
             <Modal open={jelszoOpen} title={"Jelszó módosítása"} submitText={"Módosítás"}
                 onClose={() => setJelszoOpen(false)}
                 onSubmit={async () => {
@@ -96,7 +105,6 @@ export default function Profile() {
                 <TextBox title={"Új jelszó megerősítése"} type={"password"} placeholder={"********"} value={ujJelszo2} setValue={setUjJelszo2} />
             </Modal>
 
-            {/* Fiók törlés */}
             <Modal open={torlesOpen} title={"Fiók törlése"} submitText={"Törlés"} color={"danger"}
                 onClose={() => setTorlesOpen(false)}
                 onSubmit={async () => {
@@ -111,7 +119,7 @@ export default function Profile() {
                     }
                 }}>
                 {torlesHiba && <div className="alert alert-danger">{torlesHiba}</div>}
-                Gondold át nagyon a döntésedet! A művelet nem vonható vissza!
+                <p style={{color: '#3D3730'}}>Gondold át nagyon a döntésedet! A művelet nem vonható vissza!</p>
             </Modal>
         </div>
     )

@@ -6,10 +6,10 @@ export default function About() {
 
     return (
         <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
-             style={{backgroundColor: '#f5f5dc'}}>
+             style={{backgroundColor: '#F7F4EE'}}>
             <div className="col-12 col-md-8 col-lg-6 mx-auto">
-                <h1 className="text-center mb-4" style={{fontFamily: 'cursive'}}>Notesed</h1>
-                <div className="p-4 rounded shadow" style={{backgroundColor: '#fff8dc'}}>
+                <h1 className="text-center mb-4" style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
+                <div className="p-4 rounded shadow" style={{backgroundColor: '#E8C84A'}}>
                     <div className="text-center fs-4 mb-4">Az alkalmazásról</div>
                     <p className="text-center mb-4">
                         A Notesed alkalmazás minden fontos jegyzet offline

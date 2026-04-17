@@ -41,10 +41,10 @@ export default function Notes({user, onLogout}) {
     }
 
     return (
-        <div className="container-fluid min-vh-100" style={{backgroundColor: '#f5f5dc'}}>
+        <div className="container-fluid min-vh-100" style={{backgroundColor: '#F7F4EE'}}>
             <div className="container py-4">
                 <div className="d-flex justify-content-between align-items-center mb-4">
-                    <h1 style={{fontFamily: 'cursive'}}>Notesed</h1>
+                    <h1 style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
                     <div className="d-flex gap-2">
                         <Button content={"Fiókom"} color={"dark"} onClick={() => navigation('/profile')} />
                         <Button content={"Kijelentkezés"} color={"danger"} onClick={async () => {
@@ -60,7 +60,7 @@ export default function Notes({user, onLogout}) {
                 </div>
 
                 {showForm && (
-                    <div className="p-4 rounded shadow mb-4" style={{backgroundColor: '#ffd700', border: 'none'}}>
+                    <div className="p-4 rounded shadow mb-4" style={{backgroundColor: '#E8C84A', border: 'none'}}>
                         <h4>{currentNote ? 'Jegyzet szerkesztése' : 'Új jegyzet'}</h4>
                         <TextBox title={"Cím"} type={"text"} placeholder={"Cím..."} value={title} setValue={setTitle} />
                         <Textarea title={"Tartalom"} placeholder={"Tartalom..."} value={content} setValue={setContent} />
@@ -91,7 +91,7 @@ export default function Notes({user, onLogout}) {
                 <div className="row">
                     {notes.map(note => (
                         <div key={note.id} className="col-12 col-md-6 col-lg-4 mb-3">
-                            <div className="card shadow h-100" style={{backgroundColor: '#ffd700', border: 'none'}}>
+                            <div className="card shadow h-100" style={{backgroundColor: '#E8C84A', border: 'none'}}>
                                 <div className="card-body">
                                     <h5 className="card-title">{note.title}</h5>
                                     <p className="card-text">{note.content}</p>

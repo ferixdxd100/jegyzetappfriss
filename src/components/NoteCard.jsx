@@ -5,7 +5,7 @@ function NoteCard({ note, onEdit, onDelete }) {
     <div 
       className="card h-100" 
       style={{ 
-        backgroundColor: '#ffd700', 
+        backgroundColor: '#E8C84A', 
         border: 'none',
         borderRadius: '8px',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
