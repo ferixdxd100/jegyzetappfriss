@@ -13,13 +13,13 @@ export default function Home({user}) {
                         Notesed
                     </h1>
                     <div className="d-flex flex-column flex-md-row justify-content-center gap-3">
-                        <div style={{minWidth: '200px', minHeight: '200px'}}>
+                        <div className="w-100" style={{maxWidth: '220px', minHeight: '180px', margin: '0 auto'}}>
                             <Button content={"-Bejelentkezés"} color={"warning"} onClick={() => navigation(user ? '/notes' : '/login')} />
                         </div>
-                        <div style={{minWidth: '200px', minHeight: '200px'}}>
+                        <div className="w-100" style={{maxWidth: '220px', minHeight: '180px', margin: '0 auto'}}>
                             <Button content={"-Regisztráció"} color={"warning"} onClick={() => navigation('/register')} />
                         </div>
-                        <div style={{minWidth: '200px', minHeight: '200px'}}>
+                        <div className="w-100" style={{maxWidth: '220px', minHeight: '180px', margin: '0 auto'}}>
                             <Button content={"-Az alkalmazásról"} color={"warning"} onClick={() => navigation('/about')} />
                         </div>
                     </div>

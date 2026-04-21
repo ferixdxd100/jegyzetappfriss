@@ -43,9 +43,9 @@ export default function Notes({user, onLogout}) {
     return (
         <div className="container-fluid min-vh-100" style={{backgroundColor: '#F7F4EE'}}>
             <div className="container py-4">
-                <div className="d-flex justify-content-between align-items-center mb-4">
+                <div className="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
                     <h1 style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2 flex-wrap">
                         <Button content={"Fiókom"} color={"dark"} onClick={() => navigation('/profile')} />
                         <Button content={"Kijelentkezés"} color={"danger"} onClick={async () => {
                             await logout()

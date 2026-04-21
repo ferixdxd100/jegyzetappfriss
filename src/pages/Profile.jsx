@@ -37,7 +37,7 @@ export default function Profile() {
     return (
         <div className="container-fluid min-vh-100" style={{backgroundColor: '#F7F4EE'}}>
             <div className="container py-4">
-                <div className="d-flex justify-content-between align-items-center mb-4">
+                <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4 gap-2">
                     <h1 style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
                     <Navbar user={user} />
                 </div>

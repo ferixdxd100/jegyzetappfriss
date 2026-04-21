@@ -14,7 +14,7 @@ export default function Register() {
     return (
         <div className="container-fluid min-vh-100 d-flex align-items-center justify-content-center"
              style={{backgroundColor: '#F7F4EE'}}>
-            <div style={{minWidth: 400}}>
+            <div className="w-100 px-3" style={{maxWidth: 420}}>
                 <h1 className="text-center mb-4" style={{fontFamily: 'cursive', color: '#3D3730'}}>Notesed</h1>
                 <div className="p-4 rounded shadow" style={{backgroundColor: '#E8C84A'}}>
                     <div className="text-center fs-4 mb-4">-Regisztráció</div>
