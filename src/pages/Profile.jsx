@@ -71,14 +71,15 @@ export default function Profile() {
                         setUsernameHiba(res.message)
                     } else {
                         setUsernameHiba('')
-                        setUjUsername('')
                         setUsernameOpen(false)
                         const updated = await adataim()
                         if (updated.result) setUser(updated.user)
+                        alert(`Felhasználónév sikeresen módosítva: ${ujUsername}`)
+                        setUjUsername('')
                     }
                 }}>
                 {usernameHiba && <div className="alert alert-danger">{usernameHiba}</div>}
-                <TextBox title={"Felhasználónév"} type={"text"} placeholder={"John Doe"} value={ujUsername} setValue={setUjUsername} />
+                <TextBox title={"Felhasználónév"} type={"text"} placeholder={"Kábel Zsolt Fektetö"} value={ujUsername} setValue={setUjUsername} />
             </Modal>
 
             <Modal open={jelszoOpen} title={"Jelszó módosítása"} submitText={"Módosítás"}
@@ -97,6 +98,7 @@ export default function Profile() {
                         setUjJelszo1('')
                         setUjJelszo2('')
                         setJelszoOpen(false)
+                        alert('Jelszó sikeresen módosítva!')
                     }
                 }}>
                 {jelszoHiba && <div className="alert alert-danger">{jelszoHiba}</div>}

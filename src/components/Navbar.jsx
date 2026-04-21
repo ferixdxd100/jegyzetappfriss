@@ -21,6 +21,7 @@ export default function Navbar({user}) {
                         {isLoggedIn
                             ? <Button content={"Kijelentkezés"} color={'dark'} onClick={async () => {
                                 await logout()
+                                alert('Sikeresen kijelentkeztél!')
                                 navigation('/')
                                 window.location.reload()
                               }} />
