@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 import Button from '../components/Button'
 import Modal from '../components/Modal'
 import TextBox from '../components/TextBox'
-import { adataim, usernameModositas, jelszoModositas, fiokTorlese } from '../services/api'
+import { adataim, usernameModositas, jelszoModositas, fiokTorlese, nevModositas } from '../services/api'
 
 export default function Profile() {
     const [user, setUser] = useState(null)
@@ -24,6 +24,10 @@ export default function Profile() {
     const [usernameOpen, setUsernameOpen] = useState(false)
     const [ujUsername, setUjUsername] = useState('')
     const [usernameHiba, setUsernameHiba] = useState('')
+
+    const [nevOpen, setNevOpen] = useState(false)
+    const [ujNev, setUjNev] = useState('')
+    const [nevHiba, setNevHiba] = useState('')
 
     const [jelszoOpen, setJelszoOpen] = useState(false)
     const [aktJelszo, setAktJelszo] = useState('')
@@ -57,6 +61,7 @@ export default function Profile() {
                 <div className="row justify-content-center">
                     <div className="col-12 col-md-6 col-lg-4 d-flex flex-column gap-2">
                         <Button color={'dark'} content={'Felhasználónév módosítása'} onClick={() => setUsernameOpen(true)} />
+                        <Button color={'dark'} content={'Név módosítása'} onClick={() => setNevOpen(true)} />
                         <Button color={'dark'} content={'Jelszó módosítása'} onClick={() => setJelszoOpen(true)} />
                         <Button color={'danger'} content={'Fiók törlése'} onClick={() => setTorlesOpen(true)} />
                     </div>
@@ -80,6 +85,26 @@ export default function Profile() {
                 }}>
                 {usernameHiba && <div className="alert alert-danger">{usernameHiba}</div>}
                 <TextBox title={"Felhasználónév"} type={"text"} placeholder={"Kábel Zsolt Fektetö"} value={ujUsername} setValue={setUjUsername} />
+            </Modal>
+
+
+            <Modal open={nevOpen} title={"Név módosítása"} submitText={"Módosítás"}
+                onClose={() => setNevOpen(false)}
+                onSubmit={async () => {
+                    const res = await nevModositas(ujNev)
+                    if (!res.result) {
+                        setNevHiba(res.message)
+                    } else {
+                        setNevHiba('')
+                        setNevOpen(false)
+                        const updated = await adataim()
+                        if (updated.result) setUser(updated.user)
+                        alert(`Név sikeresen módosítva: ${ujNev}`)
+                        setUjNev('')
+                    }
+                }}>
+                {nevHiba && <div className="alert alert-danger">{nevHiba}</div>}
+                <TextBox title={"Név"} type={"text"} placeholder={"Teljes név"} value={ujNev} setValue={setUjNev} />
             </Modal>
 
             <Modal open={jelszoOpen} title={"Jelszó módosítása"} submitText={"Módosítás"}
@@ -110,6 +135,7 @@ export default function Profile() {
             <Modal open={torlesOpen} title={"Fiók törlése"} submitText={"Törlés"} color={"danger"}
                 onClose={() => setTorlesOpen(false)}
                 onSubmit={async () => {
+                    if (!confirm('Biztosan törölni szeretnéd a fiókodat? Ez a művelet nem vonható vissza!')) return
                     const res = await fiokTorlese()
                     if (!res.result) {
                         setTorlesHiba(res.message)

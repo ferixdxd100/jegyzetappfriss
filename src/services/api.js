@@ -118,3 +118,15 @@ export async function fiokTorlese() {
     if (!res.ok) return {result: false, message: data.message}
     else return {result: true, message: data.message}
 }
+
+export async function nevModositas(ujNev) {
+    const res = await fetch(`${BASE}/nev`, {
+        method: 'PUT',
+        credentials: 'include',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ujNev})
+    })
+    const data = await res.json()
+    if (!res.ok) return {result: false, message: data.message}
+    else return {result: true, message: data.message}
+}
