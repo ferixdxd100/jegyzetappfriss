@@ -1,16 +1,90 @@
-# React + Vite
+# Jegyzet App Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A vizsgaremekünk egy webalapú jegyzetelő alkalmazás. Lehetővé teszi a felhasználók számára, hogy regisztráljanak, bejelentkezzenek, majd saját jegyzeteiket létrehozzák, szerkesszék és töröljék. 
 
-Currently, two official plugins are available:
+A frontend **React** keretrendszerre épül, **Vite** fejlesztői eszközzel, és **Netlify**-on került publikálásra.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Technológiák
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** – komponens alapú UI felépítés
+- **React Router DOM 7** – kliensoldali útvonalkezelés (SPA navigáció)
+- **Bootstrap 5** – reszponzív stílusok és UI komponensek
+- **Vite 7** – fejlesztői szerver és build eszköz
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Projekt struktúra
+
+```
+jegyzetappfriss/
+├── public/             # Statikus fájlok
+├── src/                # Forráskód
+│   ├── components/     # Újrafelhasználható komponensek
+│   ├── pages/          # Oldalak (útvonalakhoz rendelve)
+│   └── main.jsx        # Belépési pont
+├── dist/               # Build kimenet (generált)
+├── index.html          # HTML sablon
+├── vite.config.js      # Vite konfiguráció
+├── netlify.toml        # Netlify deploy konfiguráció
+└── package.json
+```
+
+---
+
+## Oldalak és funkciók
+
+### Regisztráció / Bejelentkezés
+A felhasználó név, felhasználónév és jelszó megadásával tud regisztrálni. Bejelentkezés után a munkamenet HTTP-only cookie-ban tárolódik a szerver oldalon.
+
+### Főoldal – Jegyzetek
+Bejelentkezés után a felhasználó látja az összes saját jegyzetét. Lehetőség van új jegyzet létrehozására, meglévők szerkesztésére és törlésére.
+
+### Fiókbeállítások
+A felhasználó módosíthatja a felhasználónevét és jelszavát, valamint törölheti a fiókját.
+
+---
+
+## Telepítés és futtatás
+
+```bash
+# Függőségek telepítése
+npm install
+
+# Fejlesztői szerver indítása
+npm run dev
+
+# Build készítése
+npm run build
+
+# Build előnézete
+npm run preview
+```
+
+A fejlesztői szerver alapértelmezetten a `http://localhost:5173/` címen érhető el.
+
+---
+## Tesztelés
+
+Élő verzió: [https://jegyzetapp.netlify.app](https://jegyzetapp.netlify.app)
+
+Tesztfelhasználó:
+
+- email: teszt@gmail.com
+- felhasználónév: teszt
+- jelszó: teszt
+
+---
+
+## Felhasznált eszközök
+
+| Csomag | Verzió | Leírás |
+|--------|--------|--------|
+| `react` | ^19.2.0 | UI keretrendszer |
+| `react-dom` | ^19.2.0 | React DOM renderelés |
+| `react-router-dom` | ^7.13.1 | Kliensoldali routing |
+| `bootstrap` | ^5.3.8 | CSS keretrendszer |
+| `vite` | ^7.3.1 | Build eszköz és dev szerver |
+| `@vitejs/plugin-react` | ^5.1.1 | React Fast Refresh támogatás |
+| `eslint` | ^9.39.1 | Kódminőség ellenőrzés |
