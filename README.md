@@ -107,3 +107,7 @@ Tesztfelhasználó:
 | `vite` | ^7.3.1 | Build eszköz és dev szerver |
 | `@vitejs/plugin-react` | ^5.1.1 | React Fast Refresh támogatás |
 | `eslint` | ^9.39.1 | Kódminőség ellenőrzés |
+
+## Készítették
+- [Deák Feri](https://github.com/ferixdxd100)
+- [Váradi krisztián](https://github.com/avaradikrisz127)
