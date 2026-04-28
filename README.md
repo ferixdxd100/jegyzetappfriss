@@ -31,18 +31,37 @@ jegyzetappfriss/
 └── package.json
 ```
 
+## Design
+A projektet a tervezéssel kezdtük, ahol Figmában kialakítottuk a kezdetleges UI prototípust
+
+<img width="1361" height="630" alt="image" src="https://github.com/user-attachments/assets/59a52a53-826b-4d7e-901f-1704a6506c32" />
+
+[FIGMA LINK](https://www.figma.com/design/wKDqh8OcFkdEovDjfnQxmO/Untitled?t=wxhNlT3Zb3VKhhFu-1)
+
 ---
 
 ## Oldalak és funkciók
 
 ### Regisztráció / Bejelentkezés
 A felhasználó név, felhasználónév és jelszó megadásával tud regisztrálni. Bejelentkezés után a munkamenet HTTP-only cookie-ban tárolódik a szerver oldalon.
+<img width="1906" height="937" alt="image" src="https://github.com/user-attachments/assets/1c39146a-aa70-442e-89c8-88d59f27f7d1" />
+
 
 ### Főoldal – Jegyzetek
 Bejelentkezés után a felhasználó látja az összes saját jegyzetét. Lehetőség van új jegyzet létrehozására, meglévők szerkesztésére és törlésére.
+<img width="1906" height="938" alt="image" src="https://github.com/user-attachments/assets/6d1e5b19-40d7-45fb-a6dd-737c5b2718ce" />
+
 
 ### Fiókbeállítások
 A felhasználó módosíthatja a felhasználónevét és jelszavát, valamint törölheti a fiókját.
+<img width="1913" height="944" alt="image" src="https://github.com/user-attachments/assets/78353319-748a-4de3-94c5-e3f093da5db4" />
+
+---
+
+### Responsive kialakítás
+
+<img width="3291" height="1500" alt="Group 3" src="https://github.com/user-attachments/assets/9f570f7e-c7b2-42ac-88e0-20e86ffaae98" />
+
 
 ---
 
